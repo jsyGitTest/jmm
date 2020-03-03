@@ -1,4 +1,4 @@
-package com.example.jm.jmm.freemakertopdf;
+package com.example.jm.jmm.util.freemakertopdf;
 
 import java.io.File;
 
