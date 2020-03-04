@@ -48,7 +48,8 @@
     </table>
 
     <br/>
-    <img src="logo.png" width="600px"/>
+    <img src="logo.png" width="300px"/>
+    <img src="logo1.jpeg" width="100px"/>
 
 </div>
 </body>
