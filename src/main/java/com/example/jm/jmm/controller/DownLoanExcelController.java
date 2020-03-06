@@ -3,6 +3,7 @@ package com.example.jm.jmm.controller;
 
 import com.example.jm.jmm.util.excel.ExcelBaseInfo;
 import com.example.jm.jmm.util.excel.ExportExcelUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,11 +22,13 @@ import java.util.List;
  * @Date: 2020/3/4
 **/
 @RestController
+@Slf4j
 public class DownLoanExcelController {
 
     @RequestMapping("download")
     public void download(HttpServletResponse response) throws Exception{
 
+        log.info("下载excel");
         ExportExcelUtil exportExcelUtil = new ExportExcelUtil();
 
         String title = "导出excel";
