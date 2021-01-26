@@ -2,3 +2,4 @@
 
 * 1. 电子签章的合同pdf，先准备好freemark模板，然后填充数据生成pdf
 * 2. 通过自定义注解配置表头，导出excel，下载
+* 3. Cacheable

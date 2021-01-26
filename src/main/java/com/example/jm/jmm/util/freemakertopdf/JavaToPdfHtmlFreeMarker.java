@@ -33,20 +33,34 @@ public class JavaToPdfHtmlFreeMarker {
 
     public static void main(String[] args) throws Exception {
 
-        String savePdfPath = "/project/newPdf.pdf";
+        String savePdfPath = "/project/newPdf1.pdf";
         String fontPath = "/templates/simhei.ttf";
-        String freemakerPath = "/templates/test.ftl";
+        String freemakerPath = "/templates/se.ftl";
         String imagePath = "file://"+PathUtil.getCurrentPath()+"/templates/";
 
         Map<String,Object> data = new HashMap();
 
-        List<PdfDataTest> detailList = new ArrayList<>();
-        detailList.add(new PdfDataTest(123456, "测试", "测试", "测试", "测试"));
-        detailList.add(new PdfDataTest(111111, "测试", "测试", "测试", "测试"));
-        detailList.add(new PdfDataTest(222222, "测试", "测试", "测试", "测试"));
 
-        data.put("name","哒哒哒哒哒哒多多");
-        data.put("detailList",detailList);
+        List<Content> contents = new ArrayList<Content>();
+        Content content1 = new Content();
+        Content content2 = new Content();
+        content1.setContent("111");
+
+
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("444444");
+        strings.add("55555");
+
+
+        System.out.println(content1.getPicsList());
+
+        content2.setContent("222");
+
+        contents.add(content1);
+        contents.add(content2);
+
+
+        data.put("list",contents);
 
 
         String content = JavaToPdfHtmlFreeMarker.freeMarkerRender(data,freemakerPath);
@@ -97,6 +111,33 @@ public class JavaToPdfHtmlFreeMarker {
             return out.toString();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                out.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * freemarker渲染html
+     */
+    public static String freeMarkerRender1(List<Content> data, String htmlTmp) {
+        Writer out = new StringWriter();
+        try {
+            // 获取模板,并设置编码方式
+            Template template = freemarkerCfg.getTemplate(htmlTmp);
+            template.setEncoding("UTF-8");
+            // 合并数据模型与模板
+            template.process(data, out); //将合并后的数据和模板写入到流中，这里使用的字符流
+            out.flush();
+            return out.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
         } finally {
             try {
                 out.close();
